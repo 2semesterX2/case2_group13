@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
-import navStyles from './styles/navStyles';
+import navStyles from '../../styles/navStyles';
 
-export default class BonesLose extends Component {
+export default class BonesWin extends Component {
     static navigationOptions = {
       ...navStyles
     }
@@ -10,7 +10,7 @@ export default class BonesLose extends Component {
     render() {
         return(
             <View style={styles.container}>
-                <Text style={styles.heading}>Oh No!</Text>
+                <Text style={styles.heading}>Good job!</Text>
                 
                 <Text style={styles.paragraph}>Thanks to the X-ray technology, you’ve been able to put the bones in order. But how does the X-ray works, anyway?</Text>
             </View>
@@ -21,7 +21,7 @@ export default class BonesLose extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#FFE6E7',
+      backgroundColor: '#171628',
       alignItems: 'flex-start',
       justifyContent: 'center',
       padding: 24,
@@ -30,20 +30,13 @@ const styles = StyleSheet.create({
     heading: {
       fontSize: 38,
       fontWeight: '800',
-      marginTop: 24
+      marginTop: 24,
+      color: 'white'
     },
     paragraph: {
       fontSize: 18,
       marginTop: 5,
       marginBottom: 10,
+      color: 'white'
     },
-    button: {
-      fontSize: 18,
-      fontWeight: '600',
-      backgroundColor: '#000',
-      color: '#fff',
-      padding: 2,
-      marginTop: 10,
-      marginBottom: 10,
-    }
   });

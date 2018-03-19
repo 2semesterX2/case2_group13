@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
-import navStyles from './styles/navStyles';
 
 import Draggable from 'react-native-draggable';
 
@@ -15,16 +14,12 @@ export default class Bones extends Component {
                 black: [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}],
                 white: [{x: 0, y: 0}, {x: 0, y: 0}, {x: 0, y: 0}]
             },
-            renderNumber: 0
+            renderNumber: 0,
+            active: true
         };
     }
 
-    static navigationOptions = {
-      ...navStyles
-    }
-
     componentDidMount() {
-        
         
         setTimeout(() => {
 
@@ -47,9 +42,9 @@ export default class Bones extends Component {
 
         }, 10)
 
-        setTimeout(() => {
+        const gameOver = setTimeout(() => {
 
-            this.props.navigation.navigate('BonesLose')
+            if (this.state.active) this.props.navigation.navigate('BonesLose');
 
         }, 10000);
     }
@@ -67,9 +62,6 @@ export default class Bones extends Component {
             const differenceX = element.x - whiteX;
             const differenceY = element.y - whiteY;
 
-            console.log(differenceX);
-            console.log(differenceY);
-
             if (whiteX != 0 &&
                 differenceX > -10 &&
                 differenceX < 10 &&
@@ -79,10 +71,13 @@ export default class Bones extends Component {
                 }
         });
 
-        console.log('score is: ' + counter);
+        if (counter === 3 && this.state.active) {
+            this.setState({active: false});
+            this.props.navigation.navigate('BonesWin');
+        }
 
-        if (counter === 3) this.props.navigation.navigate('BonesWin');
     }
+
     
     handleClick = () => {
 
@@ -97,7 +92,6 @@ export default class Bones extends Component {
         bonesPosition.white[2].x = this.thirdWhite.state._value.x;
         bonesPosition.white[2].y = this.thirdWhite.state._value.y;
 
-        
         this.setState({bonesPosition})
         
     }
@@ -107,17 +101,17 @@ export default class Bones extends Component {
         return(
             <View style={styles.app}>
                 <Timebar style={styles.timebar}>
-                    <Image style={styles.backgroundRepeat} source={require('./img/timebar_bones.png')} />
+                    <Image style={styles.backgroundRepeat} source={require('../../img/timebar_bones.png')} />
                 </Timebar>
                 <View style={styles.container}> 
                     <Text style={styles.heading}>Sort out my bones!</Text>
-                    <Image ref={self => { this.firstBlack = self; }} source={require('./img/bone1_black.png')} />
-                    <Image ref={self => { this.secondBlack = self; }}  source={require('./img/bone2_black.png')} />
-                    <Image ref={self => { this.thirdBlack = self; }}  source={require('./img/bone3_black.png')} />
+                    <Image ref={self => { this.firstBlack = self; }} source={require('../../img/bone1_black.png')} />
+                    <Image ref={self => { this.secondBlack = self; }}  source={require('../../img/bone2_black.png')} />
+                    <Image ref={self => { this.thirdBlack = self; }}  source={require('../../img/bone3_black.png')} />
                     
                     <Draggable
                         renderShape='image'
-                        imageSource={require('./img/bone1_white.png')}
+                        imageSource={require('../../img/bone1_white.png')}
                         renderSize={80}
                         pressDragRelease={this.handleClick}
                         reverse={false}
@@ -127,7 +121,7 @@ export default class Bones extends Component {
                     />
                     <Draggable
                         renderShape='image'
-                        imageSource={require('./img/bone2_white.png')}
+                        imageSource={require('../../img/bone2_white.png')}
                         renderSize={120}
                         pressDragRelease={this.handleClick}
                         reverse={false}
@@ -137,7 +131,7 @@ export default class Bones extends Component {
                     />
                     <Draggable
                         renderShape='image'
-                        imageSource={require('./img/bone3_white.png')}
+                        imageSource={require('../../img/bone3_white.png')}
                         renderSize={70}
                         pressDragRelease={this.handleClick}
                         reverse={false}

@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
-import navStyles from './styles/navStyles';
 
 export default class Overview extends Component {
-    static navigationOptions = {
-      ...navStyles
-    }
 
     goToGame = () => {
         this.props.navigation.navigate('Bones');
@@ -17,16 +13,16 @@ export default class Overview extends Component {
                 <Text style={styles.heading}>Your patients are waiting...</Text>
                 <View style={styles.scoreBox}>
                     <View style={styles.row}>
-                        <TouchableOpacity onPress={this.goToGame}><Image source={require('./img/patient_waiting.png')} /></TouchableOpacity>
-                        <Image source={require('./img/patient_waiting.png')} />
+                        <TouchableOpacity onPress={this.goToGame}><Image source={require('../img/patient_waiting.png')} /></TouchableOpacity>
+                        <Image source={require('../img/patient_waiting.png')} />
                     </View>
                     <View style={styles.row}>
-                        <Image source={require('./img/patient_waiting.png')} />
-                        <Image source={require('./img/patient_waiting.png')} />
+                        <Image source={require('../img/patient_waiting.png')} />
+                        <Image source={require('../img/patient_waiting.png')} />
                     </View>
                     <View style={styles.row}>
-                        <Image source={require('./img/patient_waiting.png')} />
-                        <Image source={require('./img/patient_waiting.png')} />
+                        <Image source={require('../img/patient_waiting.png')} />
+                        <Image source={require('../img/patient_waiting.png')} />
                     </View>
                 </View>
                 <Text style={styles.paragraph}>Click a patient and start healing.</Text>

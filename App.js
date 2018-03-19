@@ -1,19 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import navStyles from './styles/navStyles';
 import { StatusBar } from 'react-native';
+import { Button } from 'native-base';
 
-import Overview from './Overview.js';
+import Overview from './screens/Overview.js';
 
-import Bones from './Bones.js';
-import BonesWin from './BonesWin.js';
-import BonesLose from './BonesLose.js';
+import Bones from './screens/bones/Bones.js';
+import BonesWin from './screens/bones/BonesWin.js';
+import BonesLose from './screens/bones/BonesLose.js';
 
 class App extends React.Component {
-  static navigationOptions = {
-    ...navStyles
-  }
 
   goToOverview = () => {
     this.props.navigation.navigate('Overview');
@@ -29,11 +26,9 @@ class App extends React.Component {
        <View style={styles.imageContainer}><Image source={require('./img/agerley.png')} /></View>
         <Text style={styles.heading}>Welcome, my student!</Text>
         <Text style={styles.paragraph}>I had to leave for vacations for some days. Can you take over my office?</Text>
-        <Button
-          color='#000'
-          title='Sure!'
-          onPress={this.goToOverview}
-        />
+        <Button dark onPress={this.goToOverview}>
+          <Text style={styles.button}>SURE!</Text>
+        </Button>
       </View>
     );
   }
@@ -63,13 +58,10 @@ const styles = StyleSheet.create({
   },
   button: {
     fontSize: 18,
-    fontWeight: '600',
-    backgroundColor: '#000',
-    color: '#fff',
-    padding: 2,
-    marginTop: 10,
-    marginBottom: 10,
-  }
+    fontWeight: '800',
+    color: 'white',
+    padding: 10
+  },
 });
 
 export default StackNavigator({
@@ -88,4 +80,11 @@ export default StackNavigator({
   BonesLose: {
     screen: BonesLose
   },
+},
+{
+  headerMode: 'none',
+  header: null,
+  navigationOptions: {
+    gesturesEnabled: false,
+  }
 });
