@@ -4,16 +4,15 @@ import navStyles from '../../styles/navStyles';
 import { Button } from 'native-base';
 
 export default class BonesLose extends Component {
-    static navigationOptions = {
-      ...navStyles
-    }
 
     rightAnswer = () => {
-        alert('you are right');
+        global.patients[0] = 'dead';
+        this.props.navigation.navigate('Overview');
     }
     
     wrongAnswer = () => {
-        alert('you are wrong');
+        global.patients[0] = 'dead';
+        this.props.navigation.navigate('Overview');
     }
 
     render() {

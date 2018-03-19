@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
 export default class Overview extends Component {
 
-    goToGame = () => {
+    goToBones = () => {
         this.props.navigation.navigate('Bones');
     }
 
@@ -12,17 +12,54 @@ export default class Overview extends Component {
             <View style={styles.container}>
                 <Text style={styles.heading}>Your patients are waiting...</Text>
                 <View style={styles.scoreBox}>
+                    
                     <View style={styles.row}>
-                        <TouchableOpacity onPress={this.goToGame}><Image source={require('../img/patient_waiting.png')} /></TouchableOpacity>
-                        <Image source={require('../img/patient_waiting.png')} />
+                    {global.patients.slice(0,2).map((value, index) => {
+                        let image = <Image source={require('../img/patient_waiting.png')} />
+                        if(value === 'dead') image = <Image source={require('../img/patient_dead.png')} />
+                        if(value === 'healed') image = <Image source={require('../img/patient_healed.png')} />
+
+                        let odd = false;
+                        if (index % 2 === 1 ) odd = true;
+
+                        return (
+                            <TouchableOpacity onPress={this.goToBones}>
+                            {image}
+                            </TouchableOpacity>
+                        );
+                    })}
                     </View>
                     <View style={styles.row}>
-                        <Image source={require('../img/patient_waiting.png')} />
-                        <Image source={require('../img/patient_waiting.png')} />
+                    {global.patients.slice(2,4).map((value, index) => {
+                        let image = <Image source={require('../img/patient_waiting.png')} />
+                        if(value === 'dead') image = <Image source={require('../img/patient_dead.png')} />
+                        if(value === 'healed') image = <Image source={require('../img/patient_healed.png')} />
+
+                        let odd = false;
+                        if (index % 2 === 1 ) odd = true;
+
+                        return (
+                            <TouchableOpacity onPress={this.goToBones}>
+                            {image}
+                            </TouchableOpacity>
+                        );
+                    })}
                     </View>
                     <View style={styles.row}>
-                        <Image source={require('../img/patient_waiting.png')} />
-                        <Image source={require('../img/patient_waiting.png')} />
+                    {global.patients.slice(4,6).map((value, index) => {
+                        let image = <Image source={require('../img/patient_waiting.png')} />
+                        if(value === 'dead') image = <Image source={require('../img/patient_dead.png')} />
+                        if(value === 'healed') image = <Image source={require('../img/patient_healed.png')} />
+
+                        let odd = false;
+                        if (index % 2 === 1 ) odd = true;
+
+                        return (
+                            <TouchableOpacity onPress={this.goToBones}>
+                            {image}
+                            </TouchableOpacity>
+                        );
+                    })}
                     </View>
                 </View>
                 <Text style={styles.paragraph}>Click a patient and start healing.</Text>

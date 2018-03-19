@@ -1,0 +1,1 @@
+global.patients = ['waiting','waiting','waiting','waiting','waiting','waiting',];

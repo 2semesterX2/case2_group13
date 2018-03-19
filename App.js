@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { StatusBar } from 'react-native';
 import { Button } from 'native-base';
+
+import './global.js';
 
 import Overview from './screens/Overview.js';
 
