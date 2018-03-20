@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import navStyles from '../../styles/navStyles';
+import { Button } from 'native-base';
 
 export default class BonesWin extends Component {
-    static navigationOptions = {
-      ...navStyles
+
+    rightAnswer = () => {
+        global.patients[global.currentPatient] = 'healed';
+        global.currentPatient++;
+        this.props.navigation.navigate('Overview');
+    }
+
+    wrongAnswer = () => {
+        global.patients[global.currentPatient] = 'dead';
+        global.currentPatient++;
+        this.props.navigation.navigate('Overview');
     }
 
     render() {
@@ -13,6 +23,14 @@ export default class BonesWin extends Component {
                 <Text style={styles.heading}>Good job!</Text>
                 
                 <Text style={styles.paragraph}>Thanks to the X-ray technology, you’ve been able to put the bones in order. But how does the X-ray works, anyway?</Text>
+                <Button block light onPress={this.wrongAnswer}>
+                    <Text style={styles.button}>IT'S LIKE A CAMERA</Text>
+                </Button>
+                <View style={{height: 10, width: '100%'}} />
+                <Button block light onPress={this.rightAnswer}>
+                    <Text style={styles.button}>IT'S A RADIATION BEAM</Text>
+                </Button>
+                <Text style={styles.paragraph}>Find the answer in the museum</Text>
             </View>
         );
     }
@@ -38,5 +56,11 @@ const styles = StyleSheet.create({
       marginTop: 5,
       marginBottom: 10,
       color: 'white'
+    },
+    button: {
+      fontSize: 18,
+      fontWeight: '800',
+      color: 'black',
+      padding: 10
     },
   });

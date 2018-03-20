@@ -6,12 +6,14 @@ import { Button } from 'native-base';
 export default class BonesLose extends Component {
 
     rightAnswer = () => {
-        global.patients[0] = 'dead';
+        global.patients[global.currentPatient] = 'healed';
+        global.currentPatient++;
         this.props.navigation.navigate('Overview');
     }
     
     wrongAnswer = () => {
-        global.patients[0] = 'dead';
+        global.patients[global.currentPatient] = 'dead';
+        global.currentPatient++;
         this.props.navigation.navigate('Overview');
     }
 

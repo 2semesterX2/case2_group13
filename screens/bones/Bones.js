@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
 import Draggable from 'react-native-draggable';
 
-import Timebar from './Timebar';
+import Timebar from '../../components/Timebar';
 
 export default class Bones extends Component {
 

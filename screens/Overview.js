@@ -4,61 +4,62 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 export default class Overview extends Component {
 
     goToBones = () => {
-        this.props.navigation.navigate('Bones');
+        const randomGame = global.games[Math.floor(Math.random()*global.games.length)];
+        this.props.navigation.navigate(randomGame);
     }
 
     render() {
+        let message = 'Your patients are waiting...'
+
+        if (global.patients[global.currentPatient] === 'healed') {
+            const toGo = 5 - global.currentPatient;
+            message = `Good job! ${toGo} more to go...`;
+        }
+        if (global.patients[global.currentPatient] === 'dead') {
+            message = 'Oopsie! Better luck next time!';
+        }
+
         return(
             <View style={styles.container}>
-                <Text style={styles.heading}>Your patients are waiting...</Text>
+                <Text style={styles.heading}>
+                {message}
+                </Text>
                 <View style={styles.scoreBox}>
                     
                     <View style={styles.row}>
                     {global.patients.slice(0,2).map((value, index) => {
-                        let image = <Image source={require('../img/patient_waiting.png')} />
+                        let image = <TouchableOpacity onPress={this.goToBones}><Image source={require('../img/patient_waiting.png')} /></TouchableOpacity>
                         if(value === 'dead') image = <Image source={require('../img/patient_dead.png')} />
                         if(value === 'healed') image = <Image source={require('../img/patient_healed.png')} />
 
                         let odd = false;
                         if (index % 2 === 1 ) odd = true;
 
-                        return (
-                            <TouchableOpacity onPress={this.goToBones}>
-                            {image}
-                            </TouchableOpacity>
-                        );
+                        return image;
                     })}
                     </View>
                     <View style={styles.row}>
                     {global.patients.slice(2,4).map((value, index) => {
-                        let image = <Image source={require('../img/patient_waiting.png')} />
+                        let image = <TouchableOpacity onPress={this.goToBones}><Image source={require('../img/patient_waiting.png')} /></TouchableOpacity>
                         if(value === 'dead') image = <Image source={require('../img/patient_dead.png')} />
                         if(value === 'healed') image = <Image source={require('../img/patient_healed.png')} />
 
                         let odd = false;
                         if (index % 2 === 1 ) odd = true;
 
-                        return (
-                            <TouchableOpacity onPress={this.goToBones}>
-                            {image}
-                            </TouchableOpacity>
-                        );
+                        return image;
                     })}
                     </View>
                     <View style={styles.row}>
                     {global.patients.slice(4,6).map((value, index) => {
-                        let image = <Image source={require('../img/patient_waiting.png')} />
+                        let image = <TouchableOpacity onPress={this.goToBones}><Image source={require('../img/patient_waiting.png')} /></TouchableOpacity>
                         if(value === 'dead') image = <Image source={require('../img/patient_dead.png')} />
                         if(value === 'healed') image = <Image source={require('../img/patient_healed.png')} />
 
                         let odd = false;
                         if (index % 2 === 1 ) odd = true;
 
-                        return (
-                            <TouchableOpacity onPress={this.goToBones}>
-                            {image}
-                            </TouchableOpacity>
-                        );
+                        return image;
                     })}
                     </View>
                 </View>

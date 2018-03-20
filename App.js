@@ -13,6 +13,8 @@ import Bones from './screens/bones/Bones.js';
 import BonesWin from './screens/bones/BonesWin.js';
 import BonesLose from './screens/bones/BonesLose.js';
 
+import Dentist from './screens/dentist/Dentist.js';
+
 class App extends React.Component {
 
   goToOverview = () => {
@@ -82,6 +84,9 @@ export default StackNavigator({
   },
   BonesLose: {
     screen: BonesLose
+  },
+  Dentist: {
+    screen: Dentist
   },
 },
 {
