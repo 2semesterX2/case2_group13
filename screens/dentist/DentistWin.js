@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { Button } from 'native-base';
 
-export default class BonesWin extends Component {
+export default class DentistWin extends Component {
 
     rightAnswer = () => {
         global.patients[global.currentPatient] = 'healed';
@@ -21,13 +21,14 @@ export default class BonesWin extends Component {
             <View style={styles.container}>
                 <Text style={styles.heading}>Good job!</Text>
                 
-                <Text style={styles.paragraph}>Thanks to the X-ray technology, you’ve been able to put the bones in order. But how does the X-ray works, anyway?</Text>
+                <Text style={styles.paragraph}>Since the generation born in the 70s, people live their whole lives with their teeth. Do you know what was this first generation called?</Text>
+                
                 <Button block light onPress={this.wrongAnswer}>
-                    <Text style={styles.button}>IT'S LIKE A CAMERA</Text>
+                    <Text style={styles.button}>HUNDRED-TEETH GEN.</Text>
                 </Button>
                 <View style={{height: 10, width: '100%'}} />
                 <Button block light onPress={this.rightAnswer}>
-                    <Text style={styles.button}>IT'S A RADIATION BEAM</Text>
+                    <Text style={styles.button}>ZERO-HOLES GEN.</Text>
                 </Button>
                 <Text style={styles.paragraph}>Find the answer in the museum</Text>
             </View>

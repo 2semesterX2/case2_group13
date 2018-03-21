@@ -4,8 +4,18 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 export default class Overview extends Component {
 
     goToBones = () => {
+
         const randomGame = global.games[Math.floor(Math.random()*global.games.length)];
+
         this.props.navigation.navigate(randomGame);
+    }
+
+    componentWillMount() {
+        
+        if (global.currentPatient === global.patients.length) {
+            alert(`You've completed the game. Now go get your badge!`);
+            this.props.navigation.navigate('Evaluation');
+        }
     }
 
     render() {

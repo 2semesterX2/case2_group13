@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { Button } from 'native-base';
 
-export default class BonesLose extends Component {
+export default class DentistLose extends Component {
 
     rightAnswer = () => {
         global.patients[global.currentPatient] = 'healed';
@@ -20,15 +20,16 @@ export default class BonesLose extends Component {
         return(
             <View style={styles.app}>
                 <View style={styles.container}>
-                    <Text style={styles.heading}>Oh No!</Text>
+                    <Text style={styles.heading}>Oh no!</Text>
                     
-                    <Text style={styles.paragraph}>You’ve been exposed to X-ray for too long! Your fingers couldn’t stand the radiation and they fell of. Do you know whom it happened to as well?</Text>
-                    <Button block dark onPress={this.wrongAnswer}>
-                        <Text style={styles.button}>DR. AGERLEY</Text>
+                    <Text style={styles.paragraph}>You should not do dentist operations with your fingers. Lucily, we use electrical drill nowadays. Do you know, when it was invented?</Text>
+                    
+                    <Button block dark onPress={this.rightAnswer}>
+                        <Text style={styles.button}>1875</Text>
                     </Button>
                     <View style={{height: 10, width: '100%'}} />
-                    <Button block dark onPress={this.rightAnswer}>
-                        <Text style={styles.button}>DR. RÖNTGEN</Text>
+                    <Button block dark onPress={this.wrongAnswer}>
+                        <Text style={styles.button}>1914</Text>
                     </Button>
                     <Text style={styles.paragraph}>Find the answer in the museum</Text>
                 </View>

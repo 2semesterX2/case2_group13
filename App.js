@@ -1,39 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { StatusBar } from 'react-native';
 import { Button } from 'native-base';
 
 import './global.js';
 
+import Welcome from './screens/Welcome.js';
 import Overview from './screens/Overview.js';
+import Evaluation from './screens/Evaluation.js';
 
 import Bones from './screens/bones/Bones.js';
 import BonesWin from './screens/bones/BonesWin.js';
 import BonesLose from './screens/bones/BonesLose.js';
 
 import Dentist from './screens/dentist/Dentist.js';
+import DentistWin from './screens/dentist/DentistWin.js';
+import DentistLose from './screens/dentist/DentistLose.js';
 
 class App extends React.Component {
-
-  goToOverview = () => {
-    this.props.navigation.navigate('Overview');
-  }
 
   componentDidMount() {
     StatusBar.setHidden(true);
   }
 
+  proceed = () => {
+    this.props.navigation.navigate('Welcome');
+
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
-       <View style={styles.imageContainer}><Image source={require('./img/agerley.png')} /></View>
-        <Text style={styles.heading}>Welcome, my student!</Text>
-        <Text style={styles.paragraph}>I had to leave for vacations for some days. Can you take over my office?</Text>
-        <Button dark onPress={this.goToOverview}>
-          <Text style={styles.button}>SURE!</Text>
-        </Button>
+       <TouchableOpacity onPress={this.proceed} style={styles.imageContainer}>
+        <Image style={styles.imageFill} source={require('./img/loader.png')} />
+       </TouchableOpacity>
       </View>
     );
   }
@@ -43,35 +46,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFE6E7',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'center',
     padding: 24,
   },
   imageContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%'
+    width: '100%',
+    height: '100%'
   },
-  heading: {
-    fontSize: 38,
-    fontWeight: '800',
-  },
-  paragraph: {
-    fontSize: 18,
-    marginTop: 5,
-    marginBottom: 10,
-  },
-  button: {
-    fontSize: 18,
-    fontWeight: '800',
-    color: 'white',
-    padding: 10
+  imageFill: {
+    flex: 1,
+    width: '100%',
+    resizeMode: 'contain',
   },
 });
 
 export default StackNavigator({
   Home: {
     screen: App
+  },
+  Welcome: {
+    screen: Welcome
   },
   Overview: {
     screen: Overview
@@ -87,6 +84,15 @@ export default StackNavigator({
   },
   Dentist: {
     screen: Dentist
+  },
+  DentistWin: {
+    screen: DentistWin
+  },
+  DentistLose: {
+    screen: DentistLose
+  },
+  Evaluation: {
+    screen: Evaluation
   },
 },
 {
