@@ -28,7 +28,7 @@ export default class BonesLose extends Component {
                     </Button>
                     <View style={{height: 10, width: '100%'}} />
                     <Button block dark onPress={this.rightAnswer}>
-                        <Text style={styles.button}>DR. RÖNTGEN</Text>
+                        <Text style={styles.button}>DR. MENARD</Text>
                     </Button>
                     <Text style={styles.paragraph}>Find the answer in the museum</Text>
                 </View>

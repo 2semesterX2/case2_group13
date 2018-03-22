@@ -5,7 +5,7 @@ export default class Overview extends Component {
 
     goToBones = () => {
 
-        const randomGame = global.games[Math.floor(Math.random()*global.games.length)];
+        const randomGame = global.games[global.currentPatient % global.games.length];
 
         this.props.navigation.navigate(randomGame);
     }
@@ -13,7 +13,6 @@ export default class Overview extends Component {
     componentWillMount() {
         
         if (global.currentPatient === global.patients.length) {
-            alert(`You've completed the game. Now go get your badge!`);
             this.props.navigation.navigate('Evaluation');
         }
     }

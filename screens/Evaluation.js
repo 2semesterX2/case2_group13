@@ -9,6 +9,8 @@ export default class Evaluation extends Component {
     }
 
     render() {
+        const total = global.patients.length
+
         let title = '';
         let badge = '';
         color = '#FFFFFF';
@@ -17,15 +19,15 @@ export default class Evaluation extends Component {
             if (patient === 'healed') score++;
         })
 
-        if (score < 2) {
+        if (score < (total - 2)) {
             title = 'DELIRIOUS DOCTOR'
             badge = require('../img/badge_doctor.png');
             color = '#00E0FF'
-        } else if (score < 4) {
+        } else if (score < (total - 1)) {
             title = 'DAFT DENTIST'
             badge = require('../img/badge_dentist.png');
             color = '#F2C94C'
-        } else if (score < 6) {
+        } else if (score < total) {
             title = 'X-RAY X-PERT'
             badge = require('../img/badge_expert.png');
             color = '#42FF91'
@@ -42,7 +44,7 @@ export default class Evaluation extends Component {
                 </Text>
                 <View style={styles.imageContainer}><Image source={badge}/></View>
                 <Text style={styles.finalScore}>
-                    {`${score}/${global.patients.lenght} PATIENTS SAVED`}
+                    {`${score}/${total} PATIENTS SAVED`}
                 </Text>
                 <View style={{flexDirection: 'row', justifyContent: 'center'}}>
                     <Button light onPress={this.share}>
